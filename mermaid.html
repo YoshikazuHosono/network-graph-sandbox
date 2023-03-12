@@ -15,6 +15,10 @@
 		D[1.1.1.4]
 		LB{LB}
 
+		style A fill:#FF0000
+		style A stroke:#00FF00
+		style A color:#0000FF
+
 		A --> LB
 		subgraph VIP
 			LB --> B
@@ -28,9 +32,7 @@
 
 	<script type="module">
 		import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-		mermaid.initialize({ startOnLoad: false });
-		console.log("gonyo gonyo")
-		mermaid.init()
+		mermaid.initialize({startOnLoad: true});
 	</script>
 </body>
 </html>
