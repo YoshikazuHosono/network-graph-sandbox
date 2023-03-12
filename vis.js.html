@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <style type="text/css">
+      #network {
+        width: 400px;
+        height: 400px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="network"></div>
+    <script type="text/javascript">
+      var nodes = new vis.DataSet([
+        { id: 1, label: "1.1.1.1", text: "test", group: 1 },
+        { id: 2, label: "<b>1.1.1.2</b>", group: 1 },
+        { id: 3, label: "2.2.2.1", group: 2 },
+      ]);
+      var edges = new vis.DataSet([
+        { from: 1, to: 2, arrows: "to" },
+        { from: 1, to: 3, arrows: "to" },
+      ]);
+      var container = document.getElementById("network");
+      var data = {
+        nodes: nodes,
+        edges: edges,
+      };
+      var options = {};
+      var network = new vis.Network(container, data, options);
+
+      network.on("click", function (params) {
+        if (params.nodes.length == 1) {
+          var nodeId = params.nodes[0];
+          var node = nodes.get(nodeId);
+          console.log(node.label + "がクリックされました");
+        }
+      });
+    </script>
+  </body>
+</html>
